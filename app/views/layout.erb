@@ -29,9 +29,13 @@
         Q7  `'^""~`   _yQQM'         `"FQ
         F;         _yQQQQF              Q
   -->
+    
   </head>
   <body>
+    <%= erb :'layouts/_header' %>
     <%= yield %>
+    <br></br>
+    <%= erb :'layouts/_footer' %>
   </body>
-
+    
 </html>

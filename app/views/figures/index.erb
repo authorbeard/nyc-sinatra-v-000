@@ -1,0 +1,19 @@
+<h1>NYC historical figures:</h1>
+
+<% @allfigs.each do |f| %>
+  <ul>
+    <li><h3><a href="/figures/<%=f.id%>"><%= f.name %></a></h3>
+      <% if !f.titles.empty? %>
+        <% f.titles.each do |t| %>
+        <p>Titles: <%= t.name %>
+        <% end %>
+      <% end %>
+      <% if !f.landmarks.empty? %>
+        <% f.landmarks.each do |l| %>
+        <p>-Known for: <%= l.name %> 
+        <% end %> 
+      <% end %>
+  </ul>
+
+
+<% end %>

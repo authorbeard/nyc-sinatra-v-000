@@ -1,0 +1,30 @@
+<h1>Who ya got?</h1>
+
+<form action="/figures" method="post">
+
+<label>Name:</label>
+<input type="text" name="figure[name]" id="figure_name"></input>
+
+<h2>Select all titles that apply:</h2>
+
+<% Title.all.each do |t| %>
+  <input type="checkbox" name="figure[title_ids][]" value="<%=t.id%>" id="title_<%=t.id%>"><%= t.name %></input>
+<% end %>
+<h3>None of these work? NO PROBLEM! Create a new one here:</h3>
+<label>New title: </label><input type="text" name="title[name]" id="new_title"></input>
+
+<br></br>
+
+<h2>What landmark's this schmuck known for?</h2>
+
+<% Landmark.all.each do |l| %>
+  <input type="checkbox" name="figure[landmark_ids][]" value="<%=l.id%>" id="landmark_<%=l.id%>"><%= l.name %></input>
+<% end %>
+<h3>Or create a new one:</h3>
+<input type="text" name="landmark[name]" id="new_landmark"></input>
+
+
+<br></br>
+<button type="submit">Create New Figure</button>
+
+</form>
