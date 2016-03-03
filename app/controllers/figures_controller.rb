@@ -1,9 +1,3 @@
-=begin
-  
-  allows you to edit a single figure (FAILED - 9)
-
-=end
-
 class FiguresController < ApplicationController
 
   get '/figures' do
@@ -41,10 +35,22 @@ class FiguresController < ApplicationController
   end
 
   patch '/figures/:id' do
-binding.pry   
+   
     @fig=Figure.find(params[:id])
+# binding.pry
+    if !params["new_landmark"].empty?
+      nlm=Landmark.create(name: params["new_landmark"])
+      params["figure"]["landmark_ids"]<<nlm.id
+    end
 binding.pry
 
+    if !params["new_title"].empty?
+      nt=Title.create(name: params["new_title"])
+      params["figure"]["title_ids"]<<nt.id
+    end
+binding.pry
+
+    @fig.update(params["figure"])
     redirect "/figures/#{@fig.id}"
   end
 
