@@ -1,18 +1,18 @@
 <h1>heeere's <%=@fig.name%></h1>
 
 <% if !@fig.titles.empty? %>
-  <% @fig.titles.each do |t| %>
   <h2>Titles: </h2>
+  <% @fig.titles.each do |t| %>
   <p><%=t.name%>
 
   <% end %>
 <% end %>
 
 <% if !@fig.landmarks.empty? %>
-  <% @fig.landmarks.each do |l| %>
   <h2>Associated with: </h2>
-  <p><%=l.name%>
+  <% @fig.landmarks.each do |l| %>
+  <p><a href="/landmarks/<%=l.id%>"><%=l.name%></a>
   <% end %>
 <% end %>
-
+<br></br>
 <button type="submit" name="edit"><a href="/figures/<%=@fig.id%>/edit">Edit Figure</a></button>
